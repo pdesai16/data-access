@@ -128,19 +128,22 @@
 <dependency org="${ivy.artifact.group}" name="pentaho-platform-build-utils" rev="${project.revision}" changing="true" transitive="false" />
 
     <!--  Testing dependencies -->
-    <dependency org="pentaho" name="pentaho-platform-core-test" rev="${dependency.pentaho-platform.revision}"
-                changing="true" transitive="false" conf="test->default"/>
-    <dependency org="pentaho" name="pentaho-platform-repository-test" rev="${dependency.pentaho.repository.revision}" changing="true"
-                conf="test->default" transitive="false"/>
-
+    <dependency org="pentaho" name="pentaho-platform-core" rev="${dependency.pentaho-platform.revision}"
+                changing="true" transitive="false" conf="test->default">
+           <artifact name="pentaho-platform-core" ext="jar" m:classifier="tests"/>
+    </dependency>
+    <dependency org="pentaho" name="pentaho-platform-repository" rev="${dependency.pentaho.repository.revision}" changing="true"
+                transitive="true" conf="test->default">
+		<artifact name="pentaho-platform-repository" ext="jar" m:classifier="tests"/>
+		<artifact name="pentaho-platform-repository" ext="jar"/>
+    </dependency>
     <dependency org="org.springframework" name="spring-test" rev="${dependency.spring.framework.revision}" conf="test->default"/>
     <dependency org="net.sf.saxon" name="saxon" rev="9.1.0.8" transitive="false" conf="test->default"/>
     <dependency org="net.sf.saxon" name="saxon-dom" rev="9.1.0.8" transitive="false" conf="test->default"/>
     <dependency org="junit" name="junit" rev="4.12" conf="test->default"/>
     <dependency org="com.google.gwt.gwtmockito" name="gwtmockito" rev="1.1.6" conf="test->default"/>
     <dependency org="org.jmock" name="jmock-junit4" rev="2.5.1" conf="test->default"/>
-    <dependency org="pentaho" name="pentaho-platform-repository" rev="${dependency.pentaho-platform.revision}"
-                changing="true" conf="test->default"/>
+
     <dependency org="pentaho" name="pentaho-platform-scheduler" rev="${dependency.pentaho-platform.revision}"
                 changing="true" transitive="false" conf="test->default"/>
     <dependency org="org.springframework"          name="se-jcr"                 rev="${dependency.spring.extensions.jcr.revision}"           transitive="false" conf="test->default"/>
